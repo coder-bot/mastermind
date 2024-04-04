@@ -90,5 +90,7 @@ int main()
     }
 
     r_end(r);
+
+    return 0;
 }
 
