@@ -35,14 +35,11 @@ round r_start(void)
     return r;
 }
 
-/* End a round. */
 void r_end(const round r)
 {
     free(r);
 }
 
-/* Submit a guess of four colors.
- * Returns four-character feedback. */
 char *r_guess(const round r, const enum mm_color *const guess)
 {
     /* To track the feedback pins as we generate them: */
