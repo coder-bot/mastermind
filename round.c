@@ -1,4 +1,5 @@
 #include "round.h"
+
 #include "mm_color.h"
 
 #include <stdlib.h>
@@ -131,7 +132,8 @@ char *r_guess(const round r, const enum mm_color *const guess)
      * position.
      * 2. Enter white pins for each color match that does *not* also
      * match position, but only if neither the secret ball nor the guess
-     * ball for which the color match exists have an associated pin.
+     * ball for which the color match exists already has an associated
+     * pin.
      */
 
     /* Make sure we collected a sensible number of pins */
@@ -183,6 +185,11 @@ unsigned int r_turn_no(const c_round r)
     return r->turn;
 }
 
+const enum mm_color *r_secret(const c_round r)
+{
+    return r->secret;
+}
+
 static void r_set_secret(const round r)
 {
     int i;
@@ -196,10 +203,5 @@ static void r_set_secret(const round r)
     for (i = 0; i < SECRET_LEN; i++) {
         r->secret[i] = rand() % MM_COLOR_TOTAL;
     }
-}
-
-const enum mm_color *r_secret(const c_round r)
-{
-    return r->secret;
 }
 
