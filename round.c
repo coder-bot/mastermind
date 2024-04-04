@@ -17,7 +17,7 @@ struct pin {
     char is_black; /* 1 for black; 0 for white */
 };
 
-/* Fills r->secret with 4 random mm_color objects */
+/* Fill r->secret with SECRET_LEN mm_color objects */
 static void r_set_secret(round r);
 
 round r_start(void)
@@ -43,7 +43,7 @@ void r_end(const round r)
 char *r_guess(const round r, const enum mm_color *const guess)
 {
     /* To track the feedback pins as we generate them: */
-    /* Up to 4 actual pins, stored in the order we create them,
+    /* Up to SECRET_LEN actual pins, stored in the order we create them,
      * plus a counter */
     struct pin pins[SECRET_LEN];
     unsigned int n_pins = 0;
